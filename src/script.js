@@ -13,12 +13,17 @@ const scene = new THREE.Scene();
 // Object
 // const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2);
 
-const positionsArray = new Float32Array([0, 0, 0, 0, 1, 0, 1, 0, 0]);
+const geometry = new THREE.BufferGeometry();
+
+const count = 500;
+const positionsArray = new Float32Array(count * 3 * 3);
+
+for (let i = 0; i < count * 3 * 3; i++) {
+  positionsArray[i] = (Math.random() - 0.5) * 2;
+}
 
 const positionsAttribute = new THREE.BufferAttribute(positionsArray, 3);
-
-const geometry = new THREE.BufferGeometry();
-geometry.setAttribute('position', positionsAttribute);
+geometry.setAttribute("position", positionsAttribute);
 
 const material = new THREE.MeshBasicMaterial({
   color: 0xff0000,
